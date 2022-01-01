@@ -6,7 +6,14 @@ include("TimeValue.jl")
 
 
 
-pv = present_value(121.00 , 0.1 ,2)
-println(pv)
+si = simple_interest(100.00 , 0.1 ,2)
+println(si)
+
+ci = compound_interest(100.00 , 0.1 ,2)
+println(ci)
+
+ann = annuity(100.00 , 0.1 ,10)
+println(ann)
+
 
 end
