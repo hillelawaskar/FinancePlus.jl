@@ -1,6 +1,6 @@
 module FinancePlus
 
-export future_value, present_value
+export simple_interest,compound_interest,future_value, present_value,annuity
 # Write your package code here.
 include("TimeValue.jl")
 
@@ -12,8 +12,13 @@ println(si)
 ci = compound_interest(100.00 , 0.1 ,2)
 println(ci)
 
-ann = annuity(100.00 , 0.1 ,10)
-println(ann)
+
+
+ann1 = present_annuity(50000.00 , 0.06 ,25)
+println(ann1)
+
+ann2 = present_annuity_due(50000.00 , 0.06 ,25)
+println(ann2)
 
 
 end

@@ -28,10 +28,6 @@ function compound_interest(principal::AbstractFloat, interest_rate::AbstractFloa
     return future_value(principal,interest_rate,number_period,1) - principal
 end
 
-
-
-
-
 """
     future_value(present_value::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64 )::AbstractFloat
 Future Value of Money.
@@ -91,30 +87,33 @@ function present_value(future_value::AbstractFloat, interest_rate::AbstractFloat
     return future_value * (1 + interest_rate / compound_period)^-(number_period * compound_period)
 end
 
-
-
-
-
-
-
 """
-    annuity(future_value::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64, compound_period::Int64)::AbstractFloat
+    present_annuity(cash_flow_each_pay::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64)::AbstractFloat
 An annuity is a series of payments made at equal intervals.
 Examples of annuities are regular deposits to a savings account,
-monthly home mortgage payments, etc. Annuities can be classified by
-the frequency of payment dates. The payments (deposits) may be made
-weekly, monthly, quarterly, yearly, or at any other regular interval of time.
+monthly home mortgage payments, etc.
 returns a AbstractFloat
 # Example
 ```
-julia> annuity(100 , 0.1 ,10)
-=100.00
+julia> present_annuity(50000.00 , 0.06 ,25)
+=639167.8079134206
 ```
 """
-function annuity(cash_flow::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64)::AbstractFloat
-    annuity_ = 0.00
-    for i in (1:number_period)
-        annuity_ = annuity_ + (cash_flow / (1+ interest_rate)^number_period )
-    end
-    return annuity_
+function present_annuity(cash_flow_each_pay::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64)::AbstractFloat
+    return cash_flow_each_pay * (1-(1/(1+interest_rate)^number_period))/interest_rate
+
+end
+
+"""
+    present_annuity_due(cash_flow_each_pay::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64)::AbstractFloat
+Annuity due: in which payments are made at the beginning of each period.
+returns a AbstractFloat
+# Example
+```
+julia> present_annuity_due(50000.00 , 0.06 ,25)
+=677517.8763882258
+```
+"""
+function present_annuity_due(cash_flow_each_pay::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64)::AbstractFloat
+    return cash_flow_each_pay * ((1-(1/(1+interest_rate)^number_period))/interest_rate)* (1 + interest_rate)
 end
