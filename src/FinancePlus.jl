@@ -1,12 +1,12 @@
 module FinancePlus
 
-export future_value
+export future_value, present_value
 # Write your package code here.
 include("TimeValue.jl")
 
 
 
-fv = future_value(100 , 10 ,2)
-println(fv)
+pv = present_value(121.00 , 0.1 ,2)
+println(pv)
 
 end
