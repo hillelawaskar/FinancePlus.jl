@@ -13,4 +13,8 @@ using Test
     @test FinancePlus.present_value(121.00000000000001 , 0.1 ,2, 1) == 100.00
     @test FinancePlus.present_annuity(50000.00 , 0.06 ,25) == 639167.8079134206
     @test FinancePlus.present_annuity_due(50000.00 , 0.06 ,25) == 677517.8763882258
+    @test FinancePlus.present_value_interest_factor(0.05 ,5) == 0.7835261664684589
+    @test FinancePlus.future_value_interest_factor(0.05 ,5) == 1.2762815625000004
+    
+
 end

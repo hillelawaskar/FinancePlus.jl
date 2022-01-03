@@ -57,6 +57,25 @@ julia> present_value(121.00000000000001 , 0.1 ,2)
 function present_value(future_value::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64 )::AbstractFloat
     return future_value * (1 + interest_rate)^-number_period
 end
+
+"""
+    present_value_interest_factor(interest_rate::AbstractFloat, number_period::Int64 )::AbstractFloat
+Present Value Interest Factor.
+It is a factor to determine PV of a given FV with interest rate and period
+present_value_interest_factor = 1/((1 + interest_rate)^number_period)
+returns a AbstractFloat
+# Example
+```
+julia> present_value_interest_factor(0.05 ,5)
+=0.7835261664684589
+```
+"""
+function present_value_interest_factor(interest_rate::AbstractFloat, number_period::Int64 )::AbstractFloat
+    return 1/((1 + interest_rate)^number_period)
+end
+
+
+
 """
     future_value(present_value::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64,compound_period::Int64 )::AbstractFloat
 Future Value of Money with compounting period.
@@ -71,6 +90,26 @@ julia> future_value(100.00 , 0.1 ,2, 2)
 function future_value(present_value::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64,compound_period::Int64 )::AbstractFloat
     return present_value * (1 + interest_rate / compound_period)^(number_period * compound_period)
 end
+
+
+"""
+    future_value_interest_factor(interest_rate::AbstractFloat, number_period::Int64 )::AbstractFloat
+Future Value Interest Factor.
+It is a factor to determine FV of a given PV with interest rate and period
+future_value_interest_factor = (1 + interest_rate)^number_period)
+returns a AbstractFloat
+# Example
+```
+julia> future_value_interest_factor(0.05 ,5)
+=1.2762815625000004
+```
+"""
+function future_value_interest_factor(interest_rate::AbstractFloat, number_period::Int64 )::AbstractFloat
+    return (1 + interest_rate)^number_period
+end
+
+
+
 
 """
     present_value(future_value::AbstractFloat, interest_rate::AbstractFloat, number_period::Int64, compound_period::Int64)::AbstractFloat

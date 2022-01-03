@@ -20,5 +20,10 @@ println(ann1)
 ann2 = present_annuity_due(50000.00 , 0.06 ,25)
 println(ann2)
 
+PVIF= present_value_interest_factor(0.05 ,5)
+println(PVIF)
 
+
+FVIF = future_value_interest_factor(0.05 ,5)
+println(FVIF)
 end
