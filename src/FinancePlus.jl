@@ -1,6 +1,6 @@
 module FinancePlus
 
-export simple_interest,compound_interest,future_value, present_value,annuity
+export simple_interest,compound_interest,future_value,present_value,present_annuity,present_annuity_due,present_value_interest_factor,future_value_interest_factor
 # Write your package code here.
 include("TimeValue.jl")
 
